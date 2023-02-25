@@ -44,7 +44,7 @@ function changeData(event) {
     let short=false;
     if(newPass.length<4) {
         short=true;
-        alert("Password should at least contain 4 characters!");
+        alert("Password should contain at least 4 characters!");
     }
 
     //finding user from token in currentuser

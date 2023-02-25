@@ -24,7 +24,7 @@ function validate(event) {
         alert("Email should be valid!");
     }
     else if(password.length<0) {
-        alert("Password should at least contain 4 characters!");
+        alert("Password should contain at least 4 characters!");
     }
     else if (password !== confirm) {
         alert("Passwords are not matching!");
