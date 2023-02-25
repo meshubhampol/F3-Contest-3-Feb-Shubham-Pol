@@ -24,10 +24,10 @@ info.innerHTML=`
     </div>
 `
 
+let index=-1;
+
 let change = document.getElementById('change');
 change.addEventListener('click', changeData);
-
-let index=-1;
 
 function changeData(event) {
     event.preventDefault();
