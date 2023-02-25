@@ -24,7 +24,7 @@ function validate(event) {
         email.substr(emailDot+1).length === 0 ) {
         alert("Email should be valid!");
     }
-    else if(password.length<0) {
+    else if(password.length<4) {
         alert("Password should contain at least 4 characters!");
     }
     else if (password !== confirm) {
@@ -42,14 +42,13 @@ function validate(event) {
                 }
             }
         }
-        else {
-            data.push({
-                'email':email,
-                'pass':password,
-                'name': name
-            });
-            saveData(data);
-        }
+        
+        data.push({
+            'email':email,
+            'pass':password,
+            'name': name
+        });
+        saveData(data);
     }
 }
 
