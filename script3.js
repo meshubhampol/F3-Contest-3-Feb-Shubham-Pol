@@ -1,5 +1,15 @@
 console.log('currentUser-',JSON.parse(localStorage.getItem('currentUser')) );
 
+let signup = document.getElementById('signup');
+signup.addEventListener('click',confirmation);
+
+function confirmation(event) {
+    event.preventDefault();
+    if(confirm("You will be Signed out! Do you want to continue?")=== true) {
+        localStorage.removeItem('currentUser');
+        window.location.replace('./index.html');
+    }
+}
 let inputs = document.getElementsByTagName('input');
 
 let users = JSON.parse(localStorage.getItem('users') );
@@ -15,12 +25,14 @@ if(!currentUser) {
     window.location.replace('./login.html');
 }
 
+let last=currentUser.length-1;
+
 info.innerHTML=`
     <div>
-        Welcome Back ${currentUser[0].name}!
+        Welcome Back ${currentUser[last].name}!
     </div>
     <div>
-        Your Email ID : ${currentUser[0].email}
+        Your Email ID : ${currentUser[last].email}
     </div>
 `
 
@@ -45,10 +57,10 @@ function changeData(event) {
         alert("Password should contain at least 4 characters!");
     }
 
-    if(!short && currentUser[0].pass === old) {
+    if(!short && currentUser[last].pass === old) {
         if(newPass === confirm) {
             // changing password in currentUser data
-            currentUser[0].pass=newPass;
+            currentUser[last].pass=newPass;
             localStorage.setItem('currentUser',JSON.stringify(currentUser) );
             console.log('currentUser-',JSON.parse(localStorage.getItem('currentUser')) );
 
@@ -82,6 +94,6 @@ function removeCurrentUser(event) {
     }
     // removing currentUSer State
     localStorage.removeItem('currentUser');
-    
+
     window.location.replace('./login.html');
 }
