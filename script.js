@@ -1,3 +1,9 @@
+// if current user is present then directly redirect to dashboard
+let user= JSON.parse(localStorage.getItem('currentUser'));
+if(user) {
+    window.location.replace('./dashboard.html');
+}
+
 let inputs = document.getElementsByTagName('input');
 
 const data = [];
@@ -42,7 +48,7 @@ function validate(event) {
                 }
             }
         }
-        
+
         data.push({
             'email':email,
             'pass':password,
@@ -53,21 +59,8 @@ function validate(event) {
 }
 
 function saveData(data) {
-    if(!localStorage.getItem('users')) {
-        console.log(`
-        No users data present in  the local Storage. So,
-        creating users in localStorage first and  and then saving the data into it`);
-        localStorage.setItem('users',JSON.stringify(data));
-    }
-
-    else {
-        console.log(`
-        users data already present in the local Storage. So,
-        just appending the new data to previous data`);
-        let prevData = JSON.parse(localStorage.getItem('users'));
-        let newData= prevData.concat(data);
-        localStorage.setItem('users',JSON.stringify(newData));
-    }
+    // adding user to currentUser
+    localStorage.setItem('users',JSON.stringify(data));
     window.location.replace('./login.html');
     console.log('users-',localStorage.getItem('users'));
 }

@@ -24,8 +24,6 @@ info.innerHTML=`
     </div>
 `
 
-let index=-1;
-
 let change = document.getElementById('change');
 change.addEventListener('click', changeData);
 
@@ -48,18 +46,12 @@ function changeData(event) {
     }
 
     //finding user from token in currentuser
-    let token = id[1];
-    for(let i=0;i<currentUser.length;i++) {
-        if(currentUser[i].token === token) {
-            index=i;
-            break;
-        }
-    }
+    let last=currentUser.length-1;
 
-    if(!short && currentUser[index].pass === old) {
+    if(!short && currentUser[last].pass === old) {
         if(newPass === confirm) {
             // changing password in currentUser data
-            currentUser[index].pass=newPass;
+            currentUser[last].pass=newPass;
             localStorage.setItem('currentUser',JSON.stringify(currentUser) );
             console.log('currentUser-',JSON.parse(localStorage.getItem('currentUser')) );
 
@@ -91,10 +83,8 @@ function removeCurrentUser(event) {
         window.location.replace('./login.html');
         return;
     }
+    // removing currentUSer State
+    localStorage.removeItem('currentUser');
 
-    // removing user from currentUser
-    currentUser.splice(index,1);
-    localStorage.setItem('currentUser',JSON.stringify(currentUser) );
-    console.log('currentUser-',JSON.parse(localStorage.getItem('currentUser')) );
     window.location.replace('./login.html');
 }
