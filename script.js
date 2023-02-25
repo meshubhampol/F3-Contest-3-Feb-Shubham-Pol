@@ -1,6 +1,7 @@
 let inputs = document.getElementsByTagName('input');
 
 const data = [];
+
 let signup = document.getElementById('signup');
 signup.addEventListener('click', validate);
 
@@ -30,12 +31,25 @@ function validate(event) {
         alert("Passwords are not matching!");
     }
     else {
-        data.push({
-            'email':email,
-            'pass':password,
-            'name': name
-        });
-        saveData(data);
+        // checking for duplicate email
+        let user=JSON.parse(localStorage.getItem('users'));
+        if(user) {
+            for(let i=0;i<user.length;i++) {
+                if(user[i].email === email) {
+                    alert("This Email is already registered! Please Login!");
+                    window.location.replace('./login.html');
+                    return;
+                }
+            }
+        }
+        else {
+            data.push({
+                'email':email,
+                'pass':password,
+                'name': name
+            });
+            saveData(data);
+        }
     }
 }
 
