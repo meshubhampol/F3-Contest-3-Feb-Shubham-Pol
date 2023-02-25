@@ -45,13 +45,10 @@ function changeData(event) {
         alert("Password should contain at least 4 characters!");
     }
 
-    //finding user from token in currentuser
-    let last=currentUser.length-1;
-
-    if(!short && currentUser[last].pass === old) {
+    if(!short && currentUser[0].pass === old) {
         if(newPass === confirm) {
             // changing password in currentUser data
-            currentUser[last].pass=newPass;
+            currentUser[0].pass=newPass;
             localStorage.setItem('currentUser',JSON.stringify(currentUser) );
             console.log('currentUser-',JSON.parse(localStorage.getItem('currentUser')) );
 
@@ -85,6 +82,6 @@ function removeCurrentUser(event) {
     }
     // removing currentUSer State
     localStorage.removeItem('currentUser');
-
+    
     window.location.replace('./login.html');
 }

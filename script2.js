@@ -1,4 +1,5 @@
 console.log('users-',JSON.parse(localStorage.getItem('users')) );
+console.log('currentUSer-',JSON.parse(localStorage.getItem('currentUser')));
 
 let inputs = document.getElementsByTagName('input');
 
@@ -61,25 +62,8 @@ function savecurrentUser(id) {
         'token': token
     }]
 
-    // saving data to currentUser localStorage
-    if(!localStorage.getItem('currentUser')) {
-        /*
-        No users data present in  the local Storage. So,
-        creating users in localStorage first and  and then saving the data into it
-        */
-        localStorage.setItem('currentUser',JSON.stringify(data));
-    }
-
-    else {
-        /*
-        users data already present in the local Storage. So,
-        just appending the new data to previous data
-        */
-
-        let prevData = JSON.parse(localStorage.getItem('currentUser'));
-        let newData= prevData.concat(data);
-        localStorage.setItem('currentUser',JSON.stringify(newData));
-    }
+    // creating currentUser localStorage
+    localStorage.setItem('currentUser',JSON.stringify(data));
 
     window.location.replace('./dashboard.html');
 }
