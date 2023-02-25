@@ -50,7 +50,7 @@ function changeData(event) {
     //finding user from token in currentuser
     let token = id[1];
     for(let i=0;i<currentUser.length;i++) {
-        if(currentUser.token === token) {
+        if(currentUser[i].token === token) {
             index=i;
             break;
         }
