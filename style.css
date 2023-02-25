@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav-container {
+    background-color: black;
+    color: white;
+    font-size: 23px;
+}
+
+.nav-bar {
+    display: flex;
+    padding:10px 20px;
+    justify-content: space-between;
+}
+
+.nav-bar right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar .right a {
+    padding:0px 10px;
+    text-decoration:none;
+    color: white;
+}
+
+.form-container {
+    padding: 20px 20px;
+}
+
+input {
+    color: black;
+    border: 2px solid black !important;
+    border-radius: 0px !important;
+}
+
+input[placeholder] {
+    opacity: 1 !important;
+    font-weight: 600 !important;
+}
+
+.submitBtn {
+    background-color: black;
+    color: white;
+    padding: 5px 30px;
+}
+
+#info {
+    font-size: 24px;
+}
